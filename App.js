@@ -8,21 +8,54 @@ import SplashScreen from './screens/SplashScreen';
 import Signin from './screens/Signin';
 import Signup from './screens/Signup';
 import Home from './screens/Home';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Automations from './screens/Automations';
+import { Image } from 'react-native';
 
 
-const Stack = createStackNavigator();
+
+
+const StackNav = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+      <Stack.Screen name="Signin" component={Signin} />
+      <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="Home" component={DrawerNav} />
+    </Stack.Navigator>
+  )
+}
+
+const DrawerNav = () => {
+  const Drawer = createDrawerNavigator();
+  return (
+    <Drawer.Navigator screenOptions={{
+      StatusBarColor: "red",
+      headerStyle: {
+        backgroundColor: "#dfeef7"
+      },
+      headerTintColor: "black",
+    }}>
+      <Drawer.Screen name="AUTOcedi" component={Home} />
+      <Drawer.Screen name="Automation" component={Automations} />
+
+    </Drawer.Navigator>
+  )
+}
 
 export default function App() {
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="SplashScreen" component={SplashScreen} />
-        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-        <Stack.Screen name="Signin" component={Signin} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
+    <NavigationContainer screenOptions={{
+      headerShown: false
+    }}>
+      <StackNav />
+      {/* <DrawerNav/> */}
+
     </NavigationContainer>
   );
 }
+
 

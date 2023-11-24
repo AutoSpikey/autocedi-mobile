@@ -17,7 +17,7 @@ const Signin = () => {
     };
 
   return (
-    <SafeAreaView>
+    // <SafeAreaView>
       <ScrollView>
         <ImageBackground source={require("../assets/wave.png")} style={styles.imageBackground}>
           <View style={styles.centeredView}>
@@ -53,7 +53,7 @@ const Signin = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    // </SafeAreaView>
   );
 };
 
