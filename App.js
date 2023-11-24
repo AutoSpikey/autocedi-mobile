@@ -11,6 +11,7 @@ import Home from './screens/Home';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Automations from './screens/Automations';
 import { Image } from 'react-native';
+import ContinueAutomation from './screens/ContinueAutomation';
 
 
 
@@ -24,6 +25,7 @@ const StackNav = () => {
       <Stack.Screen name="Signin" component={Signin} />
       <Stack.Screen name="Signup" component={Signup} />
       <Stack.Screen name="Home" component={DrawerNav} />
+      <Stack.Screen name="ContinueAutomation" component={ContinueAutomation} />
     </Stack.Navigator>
   )
 }
