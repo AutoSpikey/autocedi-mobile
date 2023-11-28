@@ -34,7 +34,7 @@ const DrawerNav = () => {
   const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator screenOptions={{
-      StatusBarColor: "red",
+      // StatusBarColor: "red",
       headerStyle: {
         backgroundColor: "#dfeef7"
       },
