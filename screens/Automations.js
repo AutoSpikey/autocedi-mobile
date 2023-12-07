@@ -100,6 +100,7 @@ const Automations = () => {
                         placeholderTextColor="grey"
                         style={styles.input}
                     />
+                    {/* minor changes */}
 
                     {/* start */}
                     <View style={styles.inputContainer}>
