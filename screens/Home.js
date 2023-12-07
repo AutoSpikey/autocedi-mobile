@@ -85,17 +85,18 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginHorizontal: 10,
-    marginTop: 10,
+    marginHorizontal: 0, // Adjust margin as needed
+    marginTop: 20, // Adjust margin as needed
   },
   bottomHeaderText: {
-    color: "grey"
+    color: "grey",
+    fontSize: 16, // Adjust font size
   },
   bottomContainer: {
     backgroundColor: "#dfeef7",
     margin: 10,
-    borderRadius: 10,
-    padding: 5,
+    borderRadius: 15, // Adjust as needed
+    padding: 10, // Adjust padding for consistency
   },
   bottomListContainer: {
     padding: 10,
@@ -117,8 +118,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   descriptionContainer: {
-    width: 250,
+    width: "60%", // Adjust the width as needed
     justifyContent: "flex-end",
+    marginLeft: 10, // Adjust margin as needed
   },
   descriptionText: {
     color: "grey",

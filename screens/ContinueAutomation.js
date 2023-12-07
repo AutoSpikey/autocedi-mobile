@@ -6,13 +6,16 @@ import { TextInput } from 'react-native'
 import { Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
+import { useRoute } from '@react-navigation/native';
 
 
 const ContinueAutomation = () => {
 
     const [selectCheckIf, setSelectCheckIf] = useState();
     const [selectCompare, setSelectCompare] = useState();
-    const [selectPay,setSelectPay] = useState();
+    const [selectPay, setSelectPay] = useState();
     const [selectPayTo, setSelectPayTo] = useState();
 
 
@@ -45,8 +48,9 @@ const ContinueAutomation = () => {
 
     // navigation
     const navigation = useNavigation();
+
     const handleCreateRule = () => {
-        navigation.navigate('test');
+        navigation.navigate('ConfirmAutomation');
     }
 
     return (
@@ -61,7 +65,7 @@ const ContinueAutomation = () => {
                     </View>
                 </View>
             </View>
-            <ScrollView style={{ flex: 1 }}>
+            <KeyboardAwareScrollView style={{ flex: 1 }}>
 
                 <View style={[styles.container, { height: "90%", paddingTop: "5%", }]}>
                     <View style={styles.inputContainer}>
@@ -105,7 +109,7 @@ const ContinueAutomation = () => {
 
                             </View>
                         </View>
-                        
+
 
                         {/* pay */}
                         <View style={{ display: "flex", justifyContent: "space-between", flexDirection: "row" }}>
@@ -175,7 +179,7 @@ const ContinueAutomation = () => {
                     </View>
 
                 </View>
-            </ScrollView>
+            </KeyboardAwareScrollView>
         </View>
     )
 }
@@ -257,12 +261,12 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingLeft: 5,
         paddingRight: 5,
-        paddingTop: 0, // Adjust the top padding
-        paddingBottom: 0, // Adjust the bottom padding
+        paddingTop: 0,
+        paddingBottom: 0,
         marginVertical: 10,
     },
     itemStyle: {
-        fontSize: 12, // Adjust the font size as needed
+        fontSize: 12,
         height: 100
     },
 });

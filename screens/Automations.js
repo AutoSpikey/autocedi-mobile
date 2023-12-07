@@ -6,11 +6,12 @@ import { TextInput, Keyboard } from 'react-native'
 import { Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
 
 const Automations = () => {
-    const navigation = useNavigation();
+
 
     const [selectedMonth, setSelectedMonth] = useState('month');
     const [selectedStart, setSelectedStart] = useState('');
@@ -20,7 +21,8 @@ const Automations = () => {
 
     // display depending on start option
     const [showAtSpecificOption, setShowAtSpecificOption] = useState(false);
-    const [showWhenIreceiveMoney,setShowWhenIreceiveMoney] = useState(false)
+    const [showWhenIreceiveMoney, setShowWhenIreceiveMoney] = useState(false);
+    const [showChooseTriggerText, setShowChooseTriggerText] = useState(true);
 
 
 
@@ -51,39 +53,45 @@ const Automations = () => {
 
 
 
+    const handleClearButtonClick = () => {
+        setSelectedMonth('');
+        setSelectedStart('Choose a trigger');
+        setSelectedDaysOfTheWeek('');
+        setSelectedDay('');
+        // setSelectedWhenIreceiveMoney('');
 
-    const [marginBottom, setMarginBottom] = useState(0);
-
-    const handleFocus = () => {
-        setMarginBottom(200);
+        setShowAtSpecificOption(false);
+        // setShowWhenIreceiveMoney(false);
+        setShowChooseTriggerText(true);
     };
 
-    const handleBlur = () => {
-        setMarginBottom(0);
-        Keyboard.dismiss();
-    };
 
 
-
-
-    const handleContinueButtonPress = () => {
-        navigation.navigate('ContinueAutomation');
-    }
-
-
-
+    // hnadle start option change
     const handleStartOptionChange = (itemValue) => {
-        // Check if the selected option is "At a specific time"
+
+        setShowChooseTriggerText(itemValue === "Choose a trigger");
         setShowAtSpecificOption(itemValue === "At a specific time");
         setShowWhenIreceiveMoney(itemValue === "When I receive money");
     };
 
+    // navigation
+    const navigation = useNavigation();
+
+
+    const handleContinueButtonPress = () => {
+        console.log(selectedStart);
+        navigation.navigate('ContinueAutomation');
+    }
+
     return (
-        <ScrollView>
-            <View style={[styles.container, { marginBottom: marginBottom, }]}>
+        <KeyboardAwareScrollView>
+            <View style={[styles.container,]}>
+
                 <View style={styles.logo}>
                     <Image source={require('../assets/auto.png')} style={{ width: 30, height: 30 }} />
                 </View>
+
                 <View style={styles.inputContainer}>
                     {/* label */}
                     <Text style={styles.label}>label</Text>
@@ -107,6 +115,9 @@ const Automations = () => {
                             <Picker.Item label="When I receive money" value="When I receive money" />
                             <Picker.Item label="At a specific time" value="At a specific time" />
                         </Picker>
+                        {
+                            showChooseTriggerText && (<Text style={styles.chooseTriggerText}>* Please Choose a Trigger</Text>)
+                        }
                     </View>
 
                     {showAtSpecificOption && (
@@ -171,8 +182,7 @@ const Automations = () => {
                                             placeholderTextColor="grey"
                                             style={styles.input}
                                             keyboardType="numeric"
-                                            onFocus={handleFocus}
-                                            onBlur={handleBlur}
+
                                         />
                                     </View>
 
@@ -187,8 +197,6 @@ const Automations = () => {
                                             placeholderTextColor="grey"
                                             style={styles.input}
                                             keyboardType="numeric"
-                                            onFocus={handleFocus}
-                                            onBlur={handleBlur}
                                         />
                                     </View>
                                 </View>
@@ -196,7 +204,7 @@ const Automations = () => {
 
                                 <View style={{ width: "35%", paddingTop: 10 }}>
                                     <Text></Text>
-                                    <TouchableOpacity style={styles.clearButton}>
+                                    <TouchableOpacity style={styles.clearButton} onPress={handleClearButtonClick}>
                                         <Text style={styles.clearButtonText}>Clear</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -231,8 +239,6 @@ const Automations = () => {
                     }
 
 
-
-
                 </View>
 
 
@@ -245,7 +251,7 @@ const Automations = () => {
                 </View>
 
             </View>
-        </ScrollView>
+        </KeyboardAwareScrollView>
     )
 }
 
@@ -253,14 +259,19 @@ const Automations = () => {
 const styles = StyleSheet.create({
     container: {
         padding: 10,
-    },
-    logo: {
-        display: 'flex',
-        alignItems: 'center',
+        //   margin: 10, 
     },
     inputContainer: {
         marginBottom: 0,
         marginTop: 10,
+    },
+    logo: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center"
+    },
+    chooseTriggerText: {
+        color: "red",
     },
     label: {
         fontSize: 13,
@@ -291,7 +302,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18,
     },
-
     clearButton: {
         padding: 15,
         backgroundColor: '#FA8072',
@@ -304,11 +314,15 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold',
     },
-
+    continueButtonContainer: {
+        paddingTop: 30,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        flex: 1,
+    },
     continueButton: {
         padding: 15,
         backgroundColor: '#6eb1db',
-        marginVertical: 20,
         borderRadius: 10,
     },
     continueButtonText: {
@@ -322,14 +336,15 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingLeft: 5,
         paddingRight: 5,
-        paddingTop: 0, // Adjust the top padding
-        paddingBottom: 0, // Adjust the bottom padding
+        paddingTop: 0,
+        paddingBottom: 0,
         marginVertical: 10,
     },
     itemStyle: {
-        fontSize: 12, // Adjust the font size as needed
-        height: 100
+        fontSize: 12,
+        height: 100,
     },
 });
+
 
 export default Automations;

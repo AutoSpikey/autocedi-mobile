@@ -15,16 +15,23 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.ojames.autocedi",
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ojames.autocedi"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7960cb4b-e893-473f-9231-2fde4d9c1c1e"
+      }
     }
   }
 }
