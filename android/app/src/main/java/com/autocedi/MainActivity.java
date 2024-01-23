@@ -1,4 +1,4 @@
-package com.ojames.autocedi;
+package com.autocedi;
 
 import android.os.Build;
 import android.os.Bundle;

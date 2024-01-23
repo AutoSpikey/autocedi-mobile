@@ -12,10 +12,10 @@ const Home = () => {
   };
 
   const automationData = [
-    { id: 1, label: 'Light Bill', description: 'These examples are programmatically compiled from various online out these examples.', link: 'LightBillScreen' },
-    { id: 2, label: 'School', description: 'These examples are programmatically compiled from various online out these examples.', link: 'SchoolScreen' },
-    { id: 3, label: 'Payment', description: 'These examples are programmatically compiled from various online out these examples.', link: 'PaymentScreen' },
-    { id: 4, label: 'Payment', description: 'These examples are programmatically compiled from various online out these examples.', link: 'PaymentScreen' },
+    { id: 1, label: 'Light Bill', description: 'Remembering to pay your light bill is a hassle; with AutoCedi, you will never miss it', link: 'AutomationDetails' },
+    { id: 2, label: 'School', description: 'This can be annoying when you have to do it regularly; with AutoCedi you will never miss it', link: 'AutomationDetails' },
+    { id: 3, label: 'Loan', description: 'You can automate this; go ahead and do it with AutoCedi', link: 'AutomationDetails' },
+    { id: 4, label: 'Payment', description: 'Automate all your payments with AutoCedi', link: 'AutomationDetails' },
   ];
 
   const handleAutomationPress = (link) => {
@@ -44,7 +44,7 @@ const Home = () => {
             <View style={styles.bottomListContainer}>
               <View>
                 <Text>{automationItem.label}</Text>
-                <Image source={require('../assets/auto.png')} style={styles.image} />
+                <Image source={require('../assets/cedi_lightbg.png')} style={styles.image} />
               </View>
 
               <View style={styles.descriptionContainer}>
@@ -67,18 +67,19 @@ const styles = StyleSheet.create({
   },
   top: {
     marginTop: 30,
-    backgroundColor: "#dfeef7",
+    backgroundColor: "#000",
     borderRadius: 10,
   },
   topText: {
     padding: 15,
     alignSelf: "center",
     fontSize: 20,
-    fontWeight: "500"
+    fontWeight: "500",
+    color:"#fff"
   },
   scrollView: {
     // height: windowHeight,
-    backgroundColor: "white",
+    backgroundColor: "#f7f6f1",
     marginTop: 30,
   },
   bottomHeader: {
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 16, // Adjust font size
   },
   bottomContainer: {
-    backgroundColor: "#dfeef7",
+    backgroundColor: "#fff",
     margin: 10,
     borderRadius: 15, // Adjust as needed
     padding: 10, // Adjust padding for consistency
@@ -104,9 +105,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   image: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
     marginTop: 10,
+    objectFit:"contain"
   },
   largeImage: {
     width: 40,
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   descriptionContainer: {
-    width: "60%", // Adjust the width as needed
+    width: "70%", // Adjust the width as needed
     justifyContent: "flex-end",
     marginLeft: 10, // Adjust margin as needed
   },

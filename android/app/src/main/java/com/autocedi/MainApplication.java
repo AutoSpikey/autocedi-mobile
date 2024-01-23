@@ -1,4 +1,4 @@
-package com.ojames.autocedi;
+package com.autocedi;
 
 import android.app.Application;
 import android.content.res.Configuration;

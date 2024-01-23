@@ -65,9 +65,13 @@ const ContinueAutomation = () => {
                     </View>
                 </View>
             </View>
+            
+            <View style={styles.logo}>
+                    <Image source={require('../assets/cedi_lightbg.png')} style={{ width: 30, height: 30 }} />
+                </View>
             <KeyboardAwareScrollView style={{ flex: 1 }}>
 
-                <View style={[styles.container, { height: "90%", paddingTop: "5%", }]}>
+                <View style={[styles.container, { height: "90%", paddingTop: "2%", }]}>
                     <View style={styles.inputContainer}>
 
                         <Text style={styles.label}>Check if</Text>
@@ -131,7 +135,7 @@ const ContinueAutomation = () => {
 
                             <View style={{ width: "45%", paddingTop: 20, paddingRight: 5, }}>
                                 <TextInput
-                                    placeholder="Valuess"
+                                    placeholder="Values"
                                     placeholderTextColor="grey"
                                     style={styles.input}
                                     keyboardType="numeric"
@@ -173,8 +177,8 @@ const ContinueAutomation = () => {
                     </View>
                     {/* continue button */}
                     <View style={{ paddingTop: 30 }}>
-                        <TouchableOpacity style={styles.continueButton} onPress={handleCreateRule}>
-                            <Text style={styles.continueButtonText}>Create Rule</Text>
+                        <TouchableOpacity style={styles.createRule} onPress={handleCreateRule}>
+                            <Text style={styles.createRuleText}>Create Rule</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -192,7 +196,7 @@ const styles = StyleSheet.create({
     topbarContainer: {
         width: '100%',
         height: '10%',
-        backgroundColor: '#dfeef7',
+        backgroundColor: '#fff',
         paddingTop: '2%',
     },
     topbarItemIcontainer: {
@@ -206,6 +210,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
     },
+    logo:{
+        display:"flex",
+        marginTop:10,
+        justifyContent:"center",
+        alignItems:"center"
+    },
     inputContainer: {
         marginBottom: 20,
         marginTop: 10,
@@ -216,7 +226,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     input: {
-        backgroundColor: '#dfeef7',
+        backgroundColor: '#fff',
         padding: 15,
         borderRadius: 10,
         marginVertical: 10,
@@ -244,20 +254,20 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 
-    continueButton: {
+    createRule: {
         padding: 15,
-        backgroundColor: '#6eb1db',
+        backgroundColor: '#000',
         marginVertical: 20,
         borderRadius: 10,
     },
-    continueButtonText: {
+    createRuleText: {
         color: 'white',
         textAlign: 'center',
         fontSize: 20,
         fontWeight: 'bold',
     },
     picker: {
-        backgroundColor: '#dfeef7',
+        backgroundColor: '#fff',
         borderRadius: 10,
         paddingLeft: 5,
         paddingRight: 5,

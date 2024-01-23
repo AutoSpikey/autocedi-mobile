@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    color: "red",
+    color: "#000",
     textAlign: "center",
   },
   buttonsContainer: {
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   button: {
-    backgroundColor: "#6eb1db",
+    backgroundColor: "#000",
     paddingVertical: 10,
     paddingHorizontal: 15,
     width: "48%",

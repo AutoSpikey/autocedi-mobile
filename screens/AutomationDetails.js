@@ -5,14 +5,13 @@ import { StyleSheet } from 'react-native';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ConfirmAutomation = () => {
+const AutomationDetails = () => {
   // navigation
   const navigation = useNavigation();
 
-  const handleSubmit = () => {
-    navigation.navigate('Home');
+  const handleCreateRule = () => {
+    navigation.navigate('ConfirmAutomation');
   };
-
 
   return (
     <View style={{ flex: 1 }}>
@@ -22,13 +21,17 @@ const ConfirmAutomation = () => {
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Text style={styles.topbarText}>Back</Text>
             </TouchableOpacity>
-            <Text style={styles.topbarText}>Confirm Automation</Text>
+            <Text style={styles.topbarText}> Details</Text>
           </View>
         </View>
       </View>
 
       <ScrollView style={styles.container}>
         <ScrollView style={styles.bigCardContainer}>
+
+          <View style={styles.logo}>
+            <Image source={require('../assets/cedi_lightbg.png')} style={{ width: 60, height: 60 ,objectFit:"contain"}} />
+          </View>
 
           {/* Amount Section */}
           <View style={styles.amountSection}>
@@ -70,10 +73,6 @@ const ConfirmAutomation = () => {
           </View>
         </ScrollView>
 
-        <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-            <Text style={styles.submitButtonText}>Submit</Text>
-          </TouchableOpacity>
-
       </ScrollView>
     </View>
   );
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
   },
   topbarContainer: {
     width: '100%',
-    height: '10%',
+    height: '15%',
     backgroundColor: '#fff',
     paddingTop: '2%',
   },
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: 10,
+    paddingTop: 20,
   },
   topbarText: {
     fontWeight: 'bold',
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
   bigCardContainer: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    height: 150,
+    height: 250,
     padding: 20,
     marginBottom: 20
   },
@@ -180,18 +179,6 @@ const styles = StyleSheet.create({
   accountNumber: {
     display: "flex",
   },
-  submitButton: {
-    padding: 15,
-    backgroundColor: '#000',
-    marginVertical: 20,
-    borderRadius: 10,
-  },
-  submitButtonText: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
 });
 
-export default ConfirmAutomation;
+export default AutomationDetails;

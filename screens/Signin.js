@@ -1,29 +1,40 @@
-import React from 'react';
-import { ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
+
+import * as Client from "../lib/clients"
 
 const Signin = () => {
 
-    const navigation = useNavigation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const handleSigninPress = () => {
-        // Navigate to the Home screen
-        navigation.navigate('Home');
-    }
 
-    const handleCreateNewAccountPress = () => {
-        // Navigate to the Signup screen
-        navigation.navigate('Signup');
-    };
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState();
+  
+
+  const navigation = useNavigation();
+
+  const handleSigninPress = () => {
+    navigation.navigate('Home');
+  }
+
+  const handleCreateNewAccountPress = () => {
+    navigation.navigate('Signup');
+  };
 
   return (
     // <SafeAreaView>
-      <ScrollView>
-        <ImageBackground source={require("../assets/wave.png")} style={styles.imageBackground}>
-          <View style={styles.centeredView}>
-            <Text style={styles.loginText}>Login <Text style={styles.autoCediText}>autoCEDI</Text></Text>
-          </View>
-        </ImageBackground>
+    <KeyboardAwareScrollView>
+
+      <View style={styles.upperContainer}>
+
+        <View style={styles.logoContainer}>
+          <Image source={require('../assets/cedi_lightbg.png')} style={styles.image} />
+        </View>
 
         <View style={styles.container}>
           <Text style={styles.welcomeText}>Welcome Back, you've been missed!</Text>
@@ -33,12 +44,14 @@ const Signin = () => {
               placeholder='Email'
               placeholderTextColor="grey"
               style={styles.input}
+              onChangeText={(text) => setEmail(text)}
             />
             <TextInput
               placeholder='Password'
               secureTextEntry
               placeholderTextColor="grey"
               style={styles.input}
+              onChangeText={(text) => setPassword(text)}
             />
           </View>
 
@@ -52,20 +65,33 @@ const Signin = () => {
             <Text style={styles.createAccountButtonText}>Create new account.</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
+
+
+      </View>
+    </KeyboardAwareScrollView>
     // </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  imageBackground: {
-    width: '100%',
-    height: 200,
+  upperContainer: {
+    marginTop: 50,
   },
   centeredView: {
     alignItems: 'center',
     marginTop: '10%',
     paddingLeft: 10,
+  },
+  logoContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginTop: 10,
+    objectFit:"contain"
   },
   loginText: {
     fontSize: 30,
@@ -79,6 +105,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingLeft: 10,
     paddingBottom: 10,
+    paddingTop:30
   },
   welcomeText: {
     fontSize: 15,
@@ -91,7 +118,7 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   input: {
-    backgroundColor: '#dfeef7',
+    backgroundColor: '#fff',
     padding: 20,
     borderRadius: 10,
     marginVertical: 10,
@@ -102,7 +129,7 @@ const styles = StyleSheet.create({
   },
   signInButton: {
     padding: 15,
-    backgroundColor: '#6eb1db',
+    backgroundColor: '#000',
     marginVertical: 20,
     borderRadius: 10,
   },

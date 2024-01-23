@@ -44,8 +44,8 @@ const Automations = () => {
     }
 
     const whenIreceiveMoneyData = [
-        { key: 1, option: "Any Amount" },
-        { key: 2, option: "Of Amount" },
+        { key: 1, option: "Of Amount" },
+        { key: 2, option: "Any Amount" },
         { key: 3, option: "With Reference" },
         { key: 4, option: "From Sender" },
     ]
@@ -64,6 +64,7 @@ const Automations = () => {
         // setShowWhenIreceiveMoney(false);
         setShowChooseTriggerText(true);
     };
+    
 
 
 
@@ -89,14 +90,14 @@ const Automations = () => {
             <View style={[styles.container,]}>
 
                 <View style={styles.logo}>
-                    <Image source={require('../assets/auto.png')} style={{ width: 30, height: 30 }} />
+                    <Image source={require('../assets/cedi_lightbg.png')} style={{ width: 50, height: 50,objectFit:"contain" }} />
                 </View>
 
                 <View style={styles.inputContainer}>
                     {/* label */}
                     <Text style={styles.label}>label</Text>
                     <TextInput
-                        placeholder="At a specific time"
+                        placeholder="Label"
                         placeholderTextColor="grey"
                         style={styles.input}
                     />
@@ -280,7 +281,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     input: {
-        backgroundColor: '#dfeef7',
+        backgroundColor: '#fff',
         padding: 15,
         borderRadius: 10,
         marginVertical: 10,
@@ -323,7 +324,7 @@ const styles = StyleSheet.create({
     },
     continueButton: {
         padding: 15,
-        backgroundColor: '#6eb1db',
+        backgroundColor: '#000',
         borderRadius: 10,
     },
     continueButtonText: {
@@ -333,7 +334,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     picker: {
-        backgroundColor: '#dfeef7',
+        backgroundColor: '#fff',
         borderRadius: 10,
         paddingLeft: 5,
         paddingRight: 5,

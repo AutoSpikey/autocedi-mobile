@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { View, Text } from 'react-native';
-import splashslogo from "../assets/splashs.png"
+import splashslogo from "../assets/cedi_lightbg.png"
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     logo:{
         width:200,
         height:200,
+        objectFit:"contain",
     }
 })
 
